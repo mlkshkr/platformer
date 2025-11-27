@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh6wl3d3rr7ne"]
+
+[ext_resource type="Texture2D" uid="uid://hjkuwtsrlodc" path="res://graphics/Assets/Opera_senza_titolo 1.PNG" id="1_y26ei"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture = ExtResource("1_y26ei")

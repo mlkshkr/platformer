@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://vofb2kkyet5i"]
+
+[ext_resource type="Script" uid="uid://buifp0eggsk2r" path="res://combo_1.gd" id="1_302en"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_guq2t"]
+
+[node name="Combo1" type="Node2D"]
+position = Vector2(-1, -5)
+script = ExtResource("1_302en")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-44, -56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_guq2t")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(43, -56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(-1, -3)
+shape = SubResource("CircleShape2D_guq2t")
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2(44, 53)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(1, -9)
+shape = SubResource("CircleShape2D_guq2t")
+
+[node name="Area2D4" type="Area2D" parent="."]
+position = Vector2(-44, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_guq2t")
+
+[node name="Area2D5" type="Area2D" parent="."]
+position = Vector2(-2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_guq2t")

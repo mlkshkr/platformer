@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbjw28ltgmg8q"]
+
+[ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_d7j71"]
+[ext_resource type="Script" uid="uid://cn3lbqpivjbc1" path="res://scenes/entities/drone.gd" id="1_xcp44"]
+[ext_resource type="Script" uid="uid://byu41bsqf11lw" path="res://scenes/entities/detonation_area.gd" id="2_n87ok"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d7j71"]
+radius = 53.338543
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gs6nb"]
+radius = 6.0827627
+
+[node name="Drone" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_xcp44")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d7j71")
+hframes = 4
+frame = 3
+
+[node name="PlayerDetect" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d7j71")
+
+[node name="DetonationArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("2_n87ok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetonationArea"]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_gs6nb")
+debug_color = Color(1, 0.27450982, 0, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="DetonationArea" to="DetonationArea" method="_on_detonation_area_area_entered"]
+[connection signal="body_entered" from="DetonationArea" to="." method="_on_detonation_area_body_entered"]
+[connection signal="body_entered" from="DetonationArea" to="DetonationArea" method="_on_body_entered"]
+[connection signal="hit" from="DetonationArea" to="." method="_on_detonation_area_hit"]

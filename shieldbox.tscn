@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://x3nl2vjeinpp"]
+
+[ext_resource type="Script" uid="uid://nr7dlfavk5cb" path="res://shieldbox.gd" id="1_w6a3f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e062h"]
+size = Vector2(9, 8.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w6a3f"]
+
+[sub_resource type="Gradient" id="Gradient_7mo1m"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w6a3f"]
+gradient = SubResource("Gradient_7mo1m")
+
+[node name="Shieldbox" type="Area2D"]
+script = ExtResource("1_w6a3f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e062h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_w6a3f")
+position = Vector2(0, 4.7683716e-07)
+scale = Vector2(0.05957029, 0.05078129)
+texture = SubResource("GradientTexture2D_w6a3f")
