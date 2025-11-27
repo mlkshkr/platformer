@@ -5,9 +5,9 @@ var is_gameover: bool
 
 # FIGHT
 var is_melee_attacking: bool
-var hitbox_scene: PackedScene = preload("res://hitbox.tscn")
-var shieldbox_scene: PackedScene = preload("res://shieldbox.tscn")
-var combo_1_scene: PackedScene = preload("res://combo_1.tscn")
+var hitbox_scene: PackedScene = preload("res://scenes/actions/hitbox.tscn")
+var shieldbox_scene: PackedScene = preload("res://scenes/actions/shieldbox.tscn")
+var combo_1_scene: PackedScene = preload("res://scenes/actions/combo_1.tscn")
 var combo_index = ""
 
 func detect_combo_1():

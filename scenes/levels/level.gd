@@ -1,6 +1,6 @@
 extends Node2D
 
-var bullet_scene: PackedScene = preload("res://bullet.tscn")
+var bullet_scene: PackedScene = preload("res://scenes/props/bullet.tscn")
 
 # Base Methods
 
