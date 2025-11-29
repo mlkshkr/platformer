@@ -84,6 +84,10 @@ _data = {
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_ucweq")
+speed = null
+direction_x = null
+jump_strength = 250
+gravity = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 13)
@@ -117,7 +121,3 @@ vframes = 3
 [node name="Marker" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_1ie0h")
-
-[node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.12
-one_shot = true
