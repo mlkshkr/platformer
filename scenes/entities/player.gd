@@ -38,6 +38,7 @@ var jump_buffer: float = 0.0
 # Combat
 var is_melee_attacking: bool = false
 var combo_index: String = ""
+var melee_range: float = 10
 
 # Animation
 var animation_state: String = "idle"
@@ -164,7 +165,6 @@ func parry() -> void:
 # =============================================================================
 # 8) COMBO SYSTEM
 # =============================================================================
-
 func detect_combo_1() -> void:
 	if Input.is_key_pressed(KEY_I):
 		combo_index = "I"
@@ -221,4 +221,4 @@ func move_marker() -> void:
 # =============================================================================
 
 func get_melee_range() -> Vector2:
-	return position + 10 * get_local_mouse_position().normalized()
+	return position + melee_range * get_local_mouse_position().normalized()
