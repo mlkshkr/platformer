@@ -1,22 +1,49 @@
 extends Area2D
 
-var direction: Vector2 = Vector2.ZERO
-var speed: float = 100
-var active: bool = false
-var life: int = 3
+# =============================================================================
+# 1) CONFIG / EXPORTED VARIABLES
+# =============================================================================
 
-# Base Methods
+@export var speed: float = 100
+@export var life: int = 3
+
+# =============================================================================
+# 2) STATE VARIABLES
+# =============================================================================
+
+var direction: Vector2 = Vector2.ZERO
+var active: bool = false
+
+# =============================================================================
+# 3) ENGINE CALLBACKS
+# =============================================================================
 
 func _physics_process(delta: float) -> void:
 	if active:
-		position += direction * speed * delta
-	
-# Signals
-	
+		move_projectile(delta)
+
+# =============================================================================
+# 4) MOVEMENT SYSTEM
+# =============================================================================
+
+func move_projectile(delta: float) -> void:
+	position += direction * speed * delta
+
+# =============================================================================
+# 5) DAMAGE / LIFE SYSTEM
+# =============================================================================
+
+func apply_damage() -> void:
+	life -= 1
+	if life <= 0:
+		queue_free()
+
+# =============================================================================
+# 6) SIGNAL HANDLERS
+# =============================================================================
+
 func _on_body_entered(body: Node2D) -> void:
 	active = true
 
 func _on_detonation_area_hit() -> void:
-	life -= 1
-	if life == 0:
-		queue_free()
+	apply_damage()

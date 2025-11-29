@@ -62,6 +62,11 @@ func _physics_process(delta: float) -> void:
 	set_direction_x()
 
 	# --- Jump System ---
+	# Coyote Time:
+	#	 Margine di quanto dopo aver lasciato un pavimento
+	# 	il personaggio può ancora saltare.
+	# Jump Buffer:
+		# Quanto prima può saltare il personaggio dopo aver toccato terra
 	update_coyote_time(delta)
 	update_jump_buffer(delta)
 	try_jump()
@@ -87,6 +92,9 @@ func apply_gravity(delta: float) -> void:
 		velocity.y += gravity * delta
 
 func set_direction_x() -> void:
+	"""
+	Assegna direzione asse X in base a <- -> e WASD
+	"""
 	direction_x = Input.get_axis("left", "right")
 	velocity.x = direction_x * speed
 
@@ -117,6 +125,9 @@ func try_jump() -> void:
 # =============================================================================
 
 func check_shoot() -> void:
+	"""
+	Shoot e animazione
+	"""
 	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0:
 		shoot.emit(position, get_local_mouse_position().normalized())
 		$ReloadTimer.start()
@@ -130,6 +141,9 @@ func check_shoot() -> void:
 # =============================================================================
 
 func melee_attack() -> void:
+	"""
+	Attacco melee base
+	"""
 	if Input.is_action_just_pressed("melee_attack") \
 	and not Input.is_action_just_pressed("parry"):
 		var hitbox = hitbox_scene.instantiate()
@@ -137,6 +151,10 @@ func melee_attack() -> void:
 		hitbox.position = get_melee_range()
 
 func parry() -> void:
+	"""
+	Parata
+	*** da implementare ***
+	"""
 	if Input.is_action_just_pressed("parry") \
 	and not Input.is_action_just_pressed("melee"):
 		var shieldbox = shieldbox_scene.instantiate()

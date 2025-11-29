@@ -1,22 +1,37 @@
 extends Node2D
 
+# =============================================================================
+# 1) CONFIG / RESOURCES
+# =============================================================================
+
 var bullet_scene: PackedScene = preload("res://scenes/props/bullet.tscn")
 
-# Base Methods
+# =============================================================================
+# 2) ENGINE CALLBACKS
+# =============================================================================
 
 func _process(delta: float) -> void:
 	manage_drone_detection()
 
-# Other Methods
+# =============================================================================
+# 3) AI / DRONE LOGIC
+# =============================================================================
 
-func manage_drone_detection():
-	if $Entities/Drone and $Entities/Player:
-		if $Entities/Drone.active:
-			$Entities/Drone.direction = (
-				$Entities/Player.position - $Entities/Drone.position
-			).normalized()
+func manage_drone_detection() -> void:
+	"""
+	Indica la direzione verso il giocatore che l'oggetto ottiene una volta
+	che viene triggerato
+	"""
+	var drone := $Entities/Drone
+	var player := $Entities/Player
 
-# Signals
+	if drone and player:
+		if drone.active:
+			drone.direction = (player.position - drone.position).normalized()
+
+# =============================================================================
+# 4) SIGNAL HANDLERS
+# =============================================================================
 
 func _on_player_shoot(pos: Vector2, dir: Vector2) -> void:
 	var bullet = bullet_scene.instantiate()
